@@ -80,7 +80,7 @@ register_field_group(array (
 				'type' => 'select',
 				'choices' => array (
 					'active' => 'Active',
-					'closed: Closed' => 'closed: Closed',
+					'closed' => 'Closed',
 				),
 				'default_value' => 'closed',
 				'allow_null' => 0,
