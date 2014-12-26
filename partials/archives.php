@@ -1,0 +1,1 @@
+<div id="archives" class="archives"><?php flo_archives(false); ?></div>

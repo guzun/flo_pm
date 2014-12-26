@@ -1,0 +1,97 @@
+/* Link styles
+*******************************/
+a {
+  color: inherit;
+  text-decoration: none;
+}
+/* Placeholders
+*******************************/
+input[type="text"]::-webkit-input-placeholder,
+input[type="url"]::-webkit-input-placeholder,
+input[type="email"]::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: inherit;
+}
+input[type="text"]:-moz-placeholder,
+input[type="url"]:-moz-placeholder,
+input[type="email"]:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: inherit;
+}
+input[type="text"]::-moz-placeholder,
+input[type="url"]::-moz-placeholder,
+input[type="email"]::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: inherit;
+}
+input[type="text"]:-ms-input-placeholder,
+input[type="url"]:-ms-input-placeholder,
+input[type="email"]:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: inherit;
+}
+input[type="text"]:focus::-webkit-input-placeholder,
+input[type="url"]:focus::-webkit-input-placeholder,
+input[type="email"]:focus::-webkit-input-placeholder,
+textarea:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+input[type="text"]:focus:-moz-placeholder,
+input[type="url"]:focus:-moz-placeholder,
+input[type="email"]:focus:-moz-placeholder,
+textarea:focus:-moz-placeholder {
+  color: transparent;
+}
+input[type="text"]:focus::-moz-placeholder,
+input[type="url"]:focus::-moz-placeholder,
+input[type="email"]:focus::-moz-placeholder,
+textarea:focus::-moz-placeholder {
+  color: transparent;
+}
+input[type="text"]:focus:-ms-input-placeholder,
+input[type="url"]:focus:-ms-input-placeholder,
+input[type="email"]:focus:-ms-input-placeholder,
+textarea:focus:-ms-input-placeholder {
+  color: transparent;
+}
+/* Paragraphs
+*******************************/
+p {
+  line-height: inherit;
+  text-align: inherit;
+}
+p:last-child {
+  margin-bottom: 0;
+}
+p a {
+  text-decoration: underline;
+}
+p a:hover {
+  text-decoration: none;
+}
+/* Image
+*******************************/
+img {
+  max-width: 100%;
+  height: auto;
+}
+/* Headers
+*******************************/
+/* Frequently used elements
+*******************************/
+/* Vertical align
+*******************************/
+.in {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+.in > .in {
+  display: table-cell;
+  vertical-align: middle;
+}
+/* Socials
+*******************************/
+/* Fonts
+*******************************/

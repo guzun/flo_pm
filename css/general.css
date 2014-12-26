@@ -1,0 +1,368 @@
+/* Reset styles
+*******************************/
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+audio[controls],
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+html {
+  overflow-y: scroll;
+  /* 1 */
+
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  /* 2 */
+
+  -webkit-text-size-adjust: 100%;
+  /* 3 */
+
+  -ms-text-size-adjust: 100%;
+}
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+ul,
+li,
+ol,
+a,
+em,
+img,
+strong,
+fieldset,
+form,
+label,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+  list-style: none;
+}
+:focus {
+  outline: 0;
+}
+img {
+  vertical-align: middle;
+  outline: 0;
+}
+input,
+textarea {
+  -webkit-appearance: none;
+}
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+  border: none;
+}
+html,
+body,
+textarea,
+input {
+  -webkit-text-size-adjust: none;
+}
+/* Wordpress Typo
+*******************************/
+.story {
+  line-height: 1.5;
+}
+.story ul {
+  list-style: square;
+}
+.story ul li {
+  list-style: square;
+}
+.story ol {
+  list-style: decimal;
+}
+.story ol li {
+  list-style: decimal;
+}
+.story ul,
+.story ol {
+  margin: 0 0 1em 1.5em;
+  line-height: 1.5;
+}
+.story ul ul,
+.story ol ul,
+.story ul ol,
+.story ol ol {
+  margin-bottom: 0;
+}
+.story ol ol {
+  list-style: upper-alpha;
+}
+.story ol ol ol {
+  list-style: lower-roman;
+}
+.story ol ol ol ol {
+  list-style: lower-alpha;
+}
+.story h1,
+.story h2,
+.story h3,
+.story h4,
+.story h5,
+.story h6 {
+  text-transform: none;
+  margin-bottom: .5em;
+}
+.story a {
+  -webkit-transition: color 100ms linear;
+  -moz-transition: color 100ms linear;
+  -ms-transition: color 100ms linear;
+  -o-transition: color 100ms linear;
+  transition: color 100ms linear;
+}
+.story a:link,
+.story a:visited,
+.story a:hover,
+.story a:active {
+  text-decoration: underline;
+}
+.story table {
+  width: auto;
+  border-collapse: collapse;
+  margin-bottom: 18px;
+}
+.story table td,
+.story table th {
+  padding: 6px 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+.story table th {
+  font-weight: bold;
+}
+.story pre {
+  border: 1px solid #ccc;
+  background: #eee;
+  padding: 1em 2em;
+  margin-bottom: 1em;
+}
+.story blockquote {
+  font-style: italic;
+  margin: 1em 3em;
+}
+.story blockquote p:before {
+  content: '"';
+}
+.story blockquote p:after {
+  content: '"';
+}
+.story img.size-auto,
+.story img.size-full,
+.story img.size-large,
+.story img.size-medium,
+.story .attachment img {
+  max-width: 100%;
+  /* When images are too wide for containing element, force them to fit. */
+
+  height: auto;
+  /* Override height to match resized width for correct aspect ratio. */
+
+}
+.story .alignleft,
+.story img.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1em;
+}
+.story .alignright,
+.story img.alignright {
+  display: inline;
+  float: right;
+  margin-left: 1em;
+}
+.story .aligncenter,
+.story img.aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.story img.alignleft,
+.story img.alignright,
+.story img.aligncenter {
+  margin-bottom: 1em;
+}
+.story .wp-caption {
+  line-height: 1.5;
+  margin-bottom: 1em;
+  text-align: center;
+}
+.story .wp-caption p.wp-caption-text {
+  color: #888;
+  font-size: 11px;
+  margin: 0;
+  padding: 5px;
+}
+.story .wp-smiley {
+  margin: 0;
+}
+/* Plugins styles
+*******************************/
+/* Link styles
+*******************************/
+a {
+  color: inherit;
+  text-decoration: none;
+}
+/* Placeholders
+*******************************/
+input[type="text"]::-webkit-input-placeholder,
+input[type="url"]::-webkit-input-placeholder,
+input[type="email"]::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: inherit;
+}
+input[type="text"]:-moz-placeholder,
+input[type="url"]:-moz-placeholder,
+input[type="email"]:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: inherit;
+}
+input[type="text"]::-moz-placeholder,
+input[type="url"]::-moz-placeholder,
+input[type="email"]::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: inherit;
+}
+input[type="text"]:-ms-input-placeholder,
+input[type="url"]:-ms-input-placeholder,
+input[type="email"]:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: inherit;
+}
+input[type="text"]:focus::-webkit-input-placeholder,
+input[type="url"]:focus::-webkit-input-placeholder,
+input[type="email"]:focus::-webkit-input-placeholder,
+textarea:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+input[type="text"]:focus:-moz-placeholder,
+input[type="url"]:focus:-moz-placeholder,
+input[type="email"]:focus:-moz-placeholder,
+textarea:focus:-moz-placeholder {
+  color: transparent;
+}
+input[type="text"]:focus::-moz-placeholder,
+input[type="url"]:focus::-moz-placeholder,
+input[type="email"]:focus::-moz-placeholder,
+textarea:focus::-moz-placeholder {
+  color: transparent;
+}
+input[type="text"]:focus:-ms-input-placeholder,
+input[type="url"]:focus:-ms-input-placeholder,
+input[type="email"]:focus:-ms-input-placeholder,
+textarea:focus:-ms-input-placeholder {
+  color: transparent;
+}
+/* Paragraphs
+*******************************/
+p {
+  line-height: inherit;
+  text-align: inherit;
+}
+p:last-child {
+  margin-bottom: 0;
+}
+p a {
+  text-decoration: underline;
+}
+p a:hover {
+  text-decoration: none;
+}
+/* Image
+*******************************/
+img {
+  max-width: 100%;
+  height: auto;
+}
+/* Headers
+*******************************/
+/* Frequently used elements
+*******************************/
+/* Vertical align
+*******************************/
+.in {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+.in > .in {
+  display: table-cell;
+  vertical-align: middle;
+}
+/* Socials
+*******************************/
+/* Fonts
+*******************************/
+/* Main styles
+*******************************/
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* Header
+*******************************/
+/* Sidebar
+*******************************/
+/* Homepage
+*******************************/
+/* Single Project
+*******************************/
+/* 13'
+*******************************/
+@media (max-width: 1400px) {
+  
+}
+/* Mobile
+*******************************/
+@media (max-width: 960px) {
+  
+}
