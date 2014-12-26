@@ -23,7 +23,7 @@ require_once FLOTHEME_PATH . '/init.php';
 
 if( function_exists('register_field_group') ):
 
-register_field_group(array (
+/*register_field_group(array (
 	'key' => 'group_549d3f6162f42',
 	'title' => 'Project Status',
 	'fields' => array (
@@ -67,6 +67,71 @@ register_field_group(array (
 	'instruction_placement' => 'label',
 	'hide_on_screen' => '',
 ));
+*/
+
+register_field_group(array (
+		'id' => 'acf_project-status',
+		'title' => 'Project Status',
+		'fields' => array (
+			array (
+				'key' => 'field_549d65b09d072',
+				'label' => 'Status',
+				'name' => 'status',
+				'type' => 'select',
+				'choices' => array (
+					'active' => 'Active',
+					'closed: Closed' => 'closed: Closed',
+				),
+				'default_value' => 'closed',
+				'allow_null' => 0,
+				'multiple' => 0,
+			),
+			array (
+				'key' => 'field_549d663b14f39',
+				'label' => 'Project stage',
+				'name' => 'project_stage',
+				'type' => 'select',
+				'conditional_logic' => array (
+					'status' => 1,
+					'rules' => array (
+						array (
+							'field' => 'field_549d65b09d072',
+							'operator' => '==',
+							'value' => 'active',
+						),
+					),
+					'allorany' => 'all',
+				),
+				'choices' => array (
+					'design' => 'Design',
+					'development' => 'Development',
+				),
+				'default_value' => 'design',
+				'allow_null' => 0,
+				'multiple' => 1,
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'projects',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'side',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+
+
 
 register_field_group(array (
 	'key' => 'group_549d3cbc9f98b',
