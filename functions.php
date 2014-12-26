@@ -177,6 +177,18 @@ register_field_group(array (
 			'max' => '',
 			'return_format' => 'object',
 		),
+		array (
+			'key' => 'field_549d773480422',
+			'label' => 'Files',
+			'name' => 'project_files',
+			'prefix' => '',
+			'type' => 'file',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'return_format' => 'array',
+			'library' => 'all',
+		),
 	),
 	'location' => array (
 		array (
@@ -189,7 +201,7 @@ register_field_group(array (
 	),
 	'menu_order' => 0,
 	'position' => 'normal',
-	'style' => 'default',
+	'style' => 'seamless',
 	'label_placement' => 'top',
 	'instruction_placement' => 'label',
 	'hide_on_screen' => '',
