@@ -134,7 +134,7 @@ function flotheme_get_post_types() {
 				'first_image',
 			)
 		),
-            'team' => array(
+        'team' => array(
 			'config' => array(
 				'public' => true,
 				'exclude_from_search' => false,
@@ -154,7 +154,7 @@ function flotheme_get_post_types() {
 				'first_image',
 			)
 		),
-            'client' => array(
+        'client' => array(
 			'config' => array(
 				'public' => false,
                                 'show_ui' => true,
