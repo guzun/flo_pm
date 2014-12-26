@@ -114,7 +114,7 @@ function flotheme_get_images_sizes() {
  */
 function flotheme_get_post_types() {
 	return array(
-            'projects' => array(
+        'projects' => array(
 			'config' => array(
 				'public' => true,
 				'exclude_from_search' => false,
