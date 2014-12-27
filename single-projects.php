@@ -1,7 +1,14 @@
 <?php get_header(); ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 	<section>
+		<div class="status">
+			<?php $value = get_field('status'); ?>
+			<?php echo $value; ?>
+		</div>
+
 		<h3><?php the_title(); ?></h3>
+		<time pubdate="<?php the_time('c'); ?>"><?php the_time('F, Y');?></time>
+
 		<?php the_post_thumbnail(); ?>
 		<?php $terms = wp_get_post_terms($post->ID, 'project-technologies');?>
 		<?php if ($terms) : ?>
@@ -57,16 +64,20 @@
 			<?php endif; ?>
 		</ul>
 
-
 		<?php $peoples = get_field('members'); ?>
 		<?php if($peoples) : ?>
 			<ul class="people">
 				<?php foreach($peoples as $people) : ?>
 					<li>
 						<?php $url = wp_get_attachment_url( get_post_thumbnail_id($people->ID) ); ?>
+						<ul>
+							<?php $terms = wp_get_post_terms($people->ID, 'team-category');?>
+							<?php foreach ($terms as $term) : ?>
+								<li><?php echo $term->name; ?></li>
+							<?php endforeach; ?>
+						</ul>
 						<img src="<?php echo $url; ?>">
 						<a href="<?php echo get_permalink($people->ID); ?>"><?php echo get_the_title($people->ID) ?></a>
-						<?php var_dump($people); ?>
 						<span><?php echo get_field(); ?></span>
 					</li>
 				<?php endforeach; ?>
