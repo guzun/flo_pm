@@ -13,6 +13,7 @@
 
 // Theme colors
 @brand-blue: @dark-blue;
+@brand-gray: @light-gray;
 @body-font-color: @light-gray;
 
 // Typo
@@ -36,7 +37,7 @@ html {
 body {
 	background: url("../img/bg_body.jpg") 0 0;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	color: @body-font-color;
+	//color: @body-font-color;
 }
 
 .wrapper {
@@ -119,7 +120,7 @@ body {
 /* Main Navigation
 *******************************/
 .nav-main {
-	//position: fixed;
+	position: fixed;
 	height: 100%;
 	width: 10rem;
 	top: 0;
@@ -137,8 +138,41 @@ body {
 *******************************/
 .content-main {
 	background-color: @white;
+	//float: left;
+	margin-left: 10rem;
+	min-height: 100%;
 }
 
 
 /* Single Project
 *******************************/
+.content-main {
+	.clear;
+
+	> section {
+		min-height: 100%;
+		.clear;
+	}
+
+	.left-side,
+	/*.right-side*/ {
+		float: left;
+		height: 100%;
+	}
+
+	.left-side {
+		background-color: @brand-gray;
+	}
+}
+
+.single-projects {
+
+	.left-side {
+		max-width: 31rem;
+	}
+
+	.right-side {
+		overflow: hidden;
+		height: 100%;
+	}
+}
