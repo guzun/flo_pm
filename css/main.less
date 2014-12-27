@@ -9,12 +9,19 @@
 @dark-blue: #1a263a;
 @white: #fff;
 @black: #000;
-@light-gray: #ababab;
+@gray: #ababab;
+@light-gray: #f3f3f3;
+@lighter-gray: #f8f8f8;
+@salad: #4cd864;
+@red: #eb4b52;
 
 // Theme colors
 @brand-blue: @dark-blue;
 @brand-gray: @light-gray;
-@body-font-color: @light-gray;
+@body-font-color: @gray;
+@thumb-bg: @lighter-gray;
+@open-color: @salad;
+@closed-color: @red;
 
 // Typo
 @baseFontSize: 16;
@@ -35,17 +42,23 @@ html {
 }
 
 body {
-	background: url("../img/bg_body.jpg") 0 0;
+	background: url("../img/bg_body.jpg") 0 0 no-repeat;
+	background-attachment: fixed;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	//color: @body-font-color;
+	color: @body-font-color;
 }
 
 .wrapper {
-	max-width: 90rem;
+	//max-width: 90rem;
 	width: 100%;
 	height: 100%;
 	min-width: 20rem;
-	margin: 0 auto;
+	//margin: 0 auto;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
 }
 
 
@@ -53,16 +66,19 @@ body {
 *******************************/
 .header-main {
 	background-color: @brand-blue;
+	position: fixed;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	max-height: 100px;
 }
 
 .header-main-inner {
 	width: 100%;
 	padding-left: 50px;
 	padding-right: 50px;
-}
-
-.logo {
-	//float: left;
 }
 
 // Search form
@@ -123,11 +139,58 @@ body {
 	position: fixed;
 	height: 100%;
 	width: 10rem;
-	top: 0;
+	//top: 0;
 	left: 0;
-	color: @white;
 	background-color: rgba(25, 36, 57, 0.5);
+	z-index: 9;
+	padding-top: 100px;
+	text-align: center;
 	//display: none;
+
+	.menu-item {
+		font-size: 12px;
+		text-transform: uppercase;
+		padding: 20px 10px;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+		a {
+			position: relative;
+			padding-top: 50px;
+			color: @white;
+			display: block;
+
+			&:before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 50%;
+				background: url("../img/sprites.png") no-repeat;
+			}
+		}
+	}
+
+	.menu-item-dashboard,
+	.menu-item-people {
+
+		a:before {
+			width: 37px;
+			height: 37px;
+			margin-left: -16px;
+		}
+	}
+
+	.menu-item-projects {
+
+		a:before {
+			width: 26px;
+			height: 31px;
+			margin-left: -13px;
+		}
+	}
+
+	.menu-item-dashboard a:before { background-position: 0 0; }
+	.menu-item-people a:before { background-position: -50px 0; }
+	.menu-item-projects a:before { background-position: -100px 0; }
 }
 
 /* Sidebar
@@ -136,43 +199,252 @@ body {
 
 /* Homepage
 *******************************/
-.content-main {
-	background-color: @white;
-	//float: left;
-	margin-left: 10rem;
-	min-height: 100%;
-}
 
 
-/* Single Project
+/* Pages
 *******************************/
 .content-main {
-	.clear;
+	background-color: @white;
+	margin-left: 10rem;
+	min-height: 100%;
+	padding-top: 100px;
+}
 
-	> section {
-		min-height: 100%;
-		.clear;
+.content-main {
+	.clear;
+	position: relative;
+
+	.content-main-inner {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
 	}
 
 	.left-side,
-	/*.right-side*/ {
+	.rright-side {
 		float: left;
 		height: 100%;
 	}
 
 	.left-side {
-		background-color: @brand-gray;
-	}
-}
-
-.single-projects {
-
-	.left-side {
+		width: 30%;
+		min-width: 20rem;
 		max-width: 31rem;
+		background-color: rgba(255, 255, 255, 0.45);
 	}
 
 	.right-side {
 		overflow: hidden;
+		//width: 70%;
 		height: 100%;
+		background-color: @brand-gray;
 	}
+}
+
+
+/* Result Pages
+*******************************/
+.projects-list {
+	background-color: @thumb-bg;
+}
+
+.result-info {
+
+	.toggle-view,
+	.projects-num {
+		display: inline-block;
+		margin-left: 35px;
+	}
+}
+
+.result-meta {
+
+	.name,
+	.category,
+	.member,
+	.date,
+	.status {
+		color: #656e7c;
+	}
+}
+
+.grid-view {
+
+	.results {
+		.clear;
+	}
+
+	.result-item {
+		float: left;
+		width: 20%;
+		position: relative;
+		padding: 15px;
+
+		&:before {
+			content: "";
+			display: block;
+			padding-top: 100%;
+		}
+	}
+
+	.result-item-inner,
+	.result-meta,
+	.result-item-link {
+		position: absolute;
+	}
+
+	.result-item-link {
+		display: block;
+		top: 0;
+		height: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+	}
+
+	.result-item-inner {
+		top: 15px;
+		right: 15px;
+		bottom: 15px;
+		left: 15px;
+		background-color: #efefef;
+		border: 10px solid @white;
+		.box-shadow(0 3px 2px rgba(0, 0, 0, 0.1));
+	}
+
+	.result-meta {
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: @white;
+		text-align: center;
+		.opacity(0);
+		.transition(opacity 0.2s ease-in-out);
+
+		&:hover {
+			.opacity(1);
+		}
+
+		.name {
+			font-size: 18px;
+			margin-bottom: 7px;
+		}
+
+		.category {
+			font-size: 12px;
+			text-transform: uppercase;
+		}
+
+		.member,
+		.date,
+		.status {
+			display: none;
+		}
+	}
+
+	.result-meta-inner {
+		padding-top: 74px;
+		position: absolute;
+		width: 100%;
+		top: 50%;
+		.translate(0, -50%);
+
+		&:before {
+			content: '';
+			display: block;
+			width: 19px;
+			height: 27px;
+			background: url("../img/sprites.png") 0 -150px no-repeat;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			margin-left: -10px;
+		}
+	}
+}
+
+.list-view {
+
+	.result-image,
+	.result-item-link {
+		display: none;
+	}
+
+	.result-item {
+
+		&:nth-of-type(odd) {
+
+			.result-meta-inner {
+				background-color: @brand-gray;
+			}
+		}
+	}
+
+	.result-meta-inner {
+		width: 100%;
+		display: table;
+		table-layout: fixed;
+
+		.name,
+		.category,
+		.member,
+		.date,
+		.status {
+			display: table-cell;
+			vertical-align: middle;
+			padding: 6px;
+		}
+
+		.name {
+			font-size: 2 rem;
+		}
+
+		.category,
+		.member,
+		.date,
+		.status {
+			font-size: 12px;
+		}
+	}
+}
+
+.status {
+
+	span{
+		display: inline-block;
+		width: 10px;
+		height: 10px;
+		display: block;
+		.rounded(10px);
+	}
+
+	&.closed {
+		
+		span {
+			background-color: @closed-color;
+		}
+	}
+
+	&.open {
+
+		span {
+			background-color: @open-color;
+		}
+	}
+}
+
+
+/* Single Project
+*******************************/
+.single-projects {
+}
+
+
+/* Footer
+*******************************/
+.footer-main {
+	display: none;
 }

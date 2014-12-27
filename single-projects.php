@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-	<section>
+	<section class="content-main-inner">
 
 		<div class="left-side">
 			<a href="#">< back to projects</a>
