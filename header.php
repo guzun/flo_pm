@@ -12,8 +12,9 @@
 	<div id="wrapper">
 		<header id="header-main" class="header-main">
 			<a id="rel-top"></a>
-			<div class="logo"><a href="<?php echo home_url(); ?>/"><?php bloginfo('name'); ?></a></div>
-			<nav id="nav-main" role="navigation" class="nav-main cf">
+			<div class="logo"><a href="<?php echo home_url(); ?>/"><img src="<?php echo get_stylesheet_directory_uri();?>/img/logo.png" /></a></div>
+		</header>
+		<nav id="nav-main" role="navigation" class="nav-main cf">
 				<?php wp_nav_menu(array(
 					'menu'			=> 'Header Menu',
 					'menu_class'	=> 'menu cf',
@@ -26,5 +27,4 @@
 					<?php if (flo_get_option('twi')) : ?><a href="http://twitter.com/#!/<?php flo_option('twi');?>" rel="external">Twitter</a><?php endif; ?>
 				</div>
 			</nav>
-		</header>
 		<div id="content-main" class="content-main" role="main">

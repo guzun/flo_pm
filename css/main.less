@@ -1,6 +1,22 @@
 @import 'mixins.less';
 @import 'elements.less';
 
+
+/* Custom variables
+*******************************/
+
+// Base Colors
+@dark-blue: #1a263a;
+@white: #fff;
+@black: #000;
+
+// Theme colors
+@brand-blue: @dark-blue;
+
+// Typo
+@baseFontSize: 16;
+
+
 /* Main styles
 *******************************/
 html, body {
@@ -11,10 +27,35 @@ html {
 	.box-sizing;
 }
 
+body {
+	background: url("../img/bg_body.jpg") 0 0;
+}
+
+.wrapper {
+	max-width: 90rem;
+	width: 100%;
+	min-width: 20rem;
+	margin: 0 auto;
+}
+
 
 /* Header
 *******************************/
+.header-main {
+	background-color: @brand-blue;
+}
 
+/* Main Navigation
+*******************************/
+.nav-main {
+	position: fixed;
+	height: 100%;
+	width: 10rem;
+	top: 0;
+	left: 0;
+	color: @white;
+	background-color: rgba(25, 36, 57, 0.5);
+}
 
 /* Sidebar
 *******************************/

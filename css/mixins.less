@@ -287,3 +287,9 @@
     animation-delay: @delay;
 }
 
+// Px to Rem
+.font-size(@font-size: @baseFontSize) {
+  @rem: (@font-size / @baseFontSize);
+  font-size: @font-size * 1px;
+  font-size: ~"@{rem}rem"; 
+}
