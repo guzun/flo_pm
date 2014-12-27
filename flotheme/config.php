@@ -125,7 +125,7 @@ function flotheme_get_post_types() {
                                         'thumbnail',
 				),
 				'show_in_nav_menus'=> false,
-                                'rewrite' => array('slug'=>'project', 'with_front'=>false),
+                                //'rewrite' => array('slug'=>'project', 'with_front'=>true),
                                 //'menu_icon' => THEME_URL . '/images/icons/project.png'
 			),
 			'singular' => 'Project',
@@ -145,7 +145,7 @@ function flotheme_get_post_types() {
                                         'thumbnail',
 				),
 				'show_in_nav_menus'=> false,
-                                'rewrite' => array('slug'=>'project', 'with_front'=>false),
+                                //'rewrite' => array('slug'=>'project', 'with_front'=>true),
                                 //'menu_icon' => THEME_URL . '/images/icons/project.png'
 			),
 			'singular' => 'Team Member',
