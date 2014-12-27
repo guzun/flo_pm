@@ -9,9 +9,11 @@
 @dark-blue: #1a263a;
 @white: #fff;
 @black: #000;
+@light-gray: #ababab;
 
 // Theme colors
 @brand-blue: @dark-blue;
+@body-font-color: @light-gray;
 
 // Typo
 @baseFontSize: 16;
@@ -33,6 +35,8 @@ html {
 
 body {
 	background: url("../img/bg_body.jpg") 0 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: @body-font-color;
 }
 
 .wrapper {
@@ -77,13 +81,15 @@ body {
 	input[type="text"] {
 		width: 210px;
 		height: 40px;
-		box-shadow: none;
+		border: none;
+		padding: 10px;
 	}
 
 	input[type="submit"]{
 		background: transparent;
 		border: none;
 		padding: 0;
+		color: @body-font-color;
 	}
 
 	input[type="submit"],
@@ -129,6 +135,9 @@ body {
 
 /* Homepage
 *******************************/
+.content-main {
+	background-color: @white;
+}
 
 
 /* Single Project
