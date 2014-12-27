@@ -7,6 +7,8 @@
 		</div>
 
 		<h3><?php the_title(); ?></h3>
+		<time pubdate="<?php the_time('c'); ?>"><?php the_time('F, Y');?></time>
+
 		<?php the_post_thumbnail(); ?>
 		<?php $terms = wp_get_post_terms($post->ID, 'project-technologies');?>
 		<?php if ($terms) : ?>
