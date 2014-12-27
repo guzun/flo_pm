@@ -9,10 +9,16 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-	<div id="wrapper">
+	<div id="wrapper" class="wrapper">
 		<header id="header-main" class="header-main">
 			<a id="rel-top"></a>
-			<div class="logo"><a href="<?php echo home_url(); ?>/"><img src="<?php echo get_stylesheet_directory_uri();?>/img/logo.png" /></a></div>
+			<div class="header-main-inner in">
+				<div class="logo in"><a href="<?php echo home_url(); ?>/"><img src="<?php echo get_stylesheet_directory_uri();?>/img/logo.png" /></a></div>
+				<div class="searchform in">
+					<?php get_search_form( 'true' ); ?>
+					<span class="icon-search"></span>
+				</div>
+			</div>
 		</header>
 		<nav id="nav-main" role="navigation" class="nav-main cf">
 				<?php wp_nav_menu(array(
