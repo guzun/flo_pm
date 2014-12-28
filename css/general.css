@@ -722,12 +722,11 @@ body {
   top: 0;
   bottom: 0;
   z-index: 9;
-  padding-top: 100px;
   text-align: center;
 }
 .nav-main .nav-main-in {
   height: 100%;
-  padding-top: 100px;
+  margin-top: 100px;
   background-color: rgba(25, 36, 57, 0.5);
 }
 .nav-main .menu-item {
@@ -1045,6 +1044,26 @@ body {
   height: 26px;
   display: block;
   background: url(../img/download-icon-arrow-hover.png) center center no-repeat;
+}
+.project-single .link-field a {
+  vertical-align: top;
+  display: block;
+  padding: 25px 0 20px;
+  color: #56bcd7;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+.project-single .link-field a:before {
+  content: "";
+  height: 18px;
+  width: 18px;
+  display: block;
+  padding-right: 22px;
+  background: url(../img/links.png) left center no-repeat;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
 }
 /* Homepage
 *******************************/

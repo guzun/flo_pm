@@ -89,26 +89,19 @@
 						</li>
 					<?php endif; ?>
 					<?php if(get_field('invision_priview')) : ?>
-						<li>
-							<h4>invision preview project link</h4>
-							<?php $xrt = explode('/', get_field('invision_priview'));?>
-							<?php var_dump($xrt[count($xrt)-1]); ?>
-							<a href="<?php the_field('invision_priview'); ?>"></a>
+						<li class="link-field">
+							<?php $link = get_field('invision_priview'); ?>
+							<?php $link = preg_replace('#^https?://#', '', $link); ?>
+							<h4>invision preview project link</h4>		
+							<a href="<?php the_field('invision_priview'); ?>"><?php echo $link; ?></a>
 						</li>
 					<?php endif; ?>
 					<?php if(get_field('live_priview')) : ?>
-						<li>
+						<li class="link-field">
 							<h4>live preview project link</h4>
-							<?php $x = explode('/', get_field('live_priview'));?>
-							<?php var_dump($xrt[count($xrt)-1]); ?>
-							<a href="<?php the_field('live_priview'); ?>"></a>
-							<?php 
-
-							echo $x;
-
-
-
- ?>
+							<?php $link = get_field('live_priview') ?>
+							<?php $link = preg_replace('#^https?://#', '', $link); ?>
+							<a href="<?php the_field('live_priview'); ?>"><?php echo $link; ?></a>
 						</li>
 					<?php endif; ?>
 				</ul>
