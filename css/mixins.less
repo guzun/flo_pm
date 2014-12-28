@@ -293,3 +293,26 @@
   //font-size: @font-size * 1px;
   font-size: ~"@{rem}rem"; 
 }
+
+@-webkit-keyframes example {
+  0%   { }
+  100% { }
+}
+@-moz-keyframes example {
+  0%   { }
+  100% { }
+}
+@-o-keyframes example {
+  0%   { }
+  100% { }
+}
+@keyframes example {
+  0%   { }
+  100% { }
+}
+.animation(@animation) {
+  -webkit-animation: @animation;
+  -moz-animation: @animation;
+  -o-animation: @animation;
+  animation: @animation;
+}

@@ -21,6 +21,7 @@
 			</div>
 		</header>
 		<nav id="nav-main" role="navigation" class="nav-main cf">
+			<div class="nav-main-in">
 				<?php wp_nav_menu(array(
 					'menu'			=> 'Header Menu',
 					'menu_class'	=> 'menu cf',
@@ -32,5 +33,6 @@
 					<?php if (flo_get_option('fb') && flo_get_option('twi')) : ?>/<?php endif;?>
 					<?php if (flo_get_option('twi')) : ?><a href="http://twitter.com/#!/<?php flo_option('twi');?>" rel="external">Twitter</a><?php endif; ?>
 				</div>
-			</nav>
+			</div>
+		</nav>
 		<div id="content-main" class="content-main" role="main">
