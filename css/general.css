@@ -481,16 +481,12 @@ input {
   }
 }
 @-webkit-keyframes example {
-  
 }
 @-moz-keyframes example {
-  
 }
 @-o-keyframes example {
-  
 }
 @keyframes example {
-  
 }
 /* Link styles
 *******************************/
@@ -1064,6 +1060,19 @@ body {
   display: inline-block;
   *display: inline;
   *zoom: 1;
+}
+/* Pagination
+*******************************/
+.b_pag {
+  text-align: center;
+}
+.b_pag li {
+  display: inline-block;
+  margin-right: 10px;
+}
+.b_pag li .current {
+  font-weight: bold;
+  color: #030303;
 }
 /* Homepage
 *******************************/
