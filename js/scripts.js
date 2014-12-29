@@ -1,8 +1,92 @@
 // add your custom scripts here
 // as the page loads, call these scripts
 jQuery(function($) {
+    $( ".flo-date-filter" ).datepicker(); // init datepicker
+    $( ".flo-tag-filter" ).autocomplete({
 
+        source: flo.ajax_load_url + '?action=search_tag&params=' + jQuery( this ).val(), 
+        minLength:2,
+        
+        select: function( event, ui ) {
+            if(typeof(ui.item.data ) != 'undefined'){
+                console.log(ui.item.data);
+                jQuery('.flo-tag-filter-value').val(ui.item.data);
+
+                flo_filter_projects(); // triger search
+            }
+            
+        }
+    });
+
+    $( ".flo-member-filter" ).autocomplete({
+        
+        source: flo.ajax_load_url + '?action=search_members&params=' + jQuery( this ).val(), 
+        minLength:2,
+        
+        select: function( event, ui ) {
+            if(typeof(ui.item.data ) != 'undefined'){
+                console.log(ui.item.data);
+                jQuery('.flo-member-filter-value').val(ui.item.data);
+
+                flo_filter_projects(); // triger search
+            }
+            
+        }
+    });
+    
+    
+    $( ".tag-filter .ui-autocomplete-input, .team-member-filter .ui-autocomplete-input" ).on('change',function(){
+        $(this).parent().find('.hidden-filter-input').val('');
+        console.log($(this).parent().find('.hidden-filter-input').val());
+
+    });   
+
+    $( ".flo-filter-input" ).on('change',function(){
+        flo_filter_projects();
+    });   
+
+    $('.clear-input').on('click',function(){
+        if( $.trim( $(this).parent().find('input[type=hidden]').val() ) != ''){
+            $(this).parent().find('input').val('');
+            flo_filter_projects();
+        }else{
+            $(this).parent().find('input').val('');
+        }
+    
+        
+    });
+
+    flo_ajax_pagination();
 });
+
+function flo_ajax_pagination(){
+    jQuery('.pag').on('click','.page-numbers', function(event){
+        event.preventDefault();
+
+        jQuery('.flo-page-number').val(jQuery(this).data('pagenumber'));
+
+        setTimeout(function(){
+            flo_filter_projects();    
+        },200);
+        
+    });
+}
+
+function flo_filter_projects(){
+
+    jQuery.ajax({
+        url: flo.ajax_load_url,
+        data: '&action=filter_projects&'+jQuery('.flo-projects-filter :input').serialize(),
+        type: 'POST',
+        cache: false,
+        success: function (response) {
+
+            jQuery('.flo-projects').html(response); 
+            flo_ajax_pagination();
+
+        }
+    });
+}
 
 // Modernizr.load loading the right scripts only if you need them
 Modernizr.load([

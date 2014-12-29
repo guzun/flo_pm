@@ -62,6 +62,8 @@ function flo_enqueue_styles() {
 	// add general css file
 	wp_register_style( 'flotheme_general_css', THEME_URL . '/css/general.css', array(), FLOTHEME_THEME_VERSION, 'all');
 	wp_enqueue_style('flotheme_general_css');
+
+	wp_enqueue_style( 'jquery-ui-datepicker-style' , '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css');
 }
 add_action( 'wp_enqueue_scripts', 'flo_enqueue_styles' );
 
@@ -71,8 +73,8 @@ add_action( 'wp_enqueue_scripts', 'flo_enqueue_styles' );
 function flo_enqueue_scripts() {
 
 	// load jquery from google cdn
-	wp_deregister_script('jquery');
-	wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
+	//wp_deregister_script('jquery');
+	//wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
 
 	// add modernizr
 	wp_register_script( 'flo_modernizr', THEME_URL . '/js/libs/modernizr.js', array( 'jquery' ), FLOTHEME_THEME_VERSION, false );
@@ -88,6 +90,8 @@ function flo_enqueue_scripts() {
 	wp_enqueue_script( 'jquery-form' );
 	wp_enqueue_script( 'flo_modernizr' );
 	wp_enqueue_script( 'flo_plugins' );
+	wp_enqueue_script( 'jquery-ui-autocomplete' );
+	wp_enqueue_script( 'jquery-ui-datepicker' );
 	wp_enqueue_script( 'flo_scripts' );
 }
 add_action( 'wp_enqueue_scripts', 'flo_enqueue_scripts');
@@ -405,6 +409,197 @@ function flo_load_post() {
 }
 add_action('wp_ajax_flotheme_load_post', 'flo_load_post');
 add_action('wp_ajax_nopriv_flotheme_load_post', 'flo_load_post');
+
+
+/**
+ * Search for Projects Tags
+ */
+function flo_search_tag(){
+	
+	if(isset($_GET['action']) && $_GET['action'] == 'search_tag' && isset($_GET['term']) && strlen($_GET['term']) ){
+
+		$result = array();
+        
+        $args = array('name__like' => $_GET['term']);
+        $technologies = get_terms( 'project-technologies', $args );
+
+        if(is_array($technologies) && sizeof($technologies)){
+        	foreach ($technologies as $key => $technology) {
+        		
+        		$a_json_row["suggestions"] = $technology -> name;
+                $a_json_row["data"] =  $technology -> taxonomy.'|'.$technology -> term_id;
+                $a_json_row["label"] = $technology -> name;
+                array_push($result, $a_json_row);
+
+        	}
+
+        }
+
+        $categories = get_terms( 'project-category', $args );
+
+        if(is_array($categories) && sizeof($categories)){
+        	foreach ($categories as $key => $category) {
+        		
+        		$a_json_row["suggestions"] = $category -> name;
+                $a_json_row["data"] = $category -> taxonomy.'|'.$category -> term_id;
+                $a_json_row["label"] = $category -> name;
+                array_push($result, $a_json_row);
+
+        	}
+
+        }
+
+        echo json_encode( $result );
+
+	}
+
+	exit();
+}
+
+add_action('wp_ajax_search_tag', 'flo_search_tag');
+add_action('wp_ajax_nopriv_search_tag', 'flo_search_tag');
+
+
+/**
+ * Search for Projects Members
+ */
+function flo_search_members(){
+	
+	if(isset($_GET['action']) && $_GET['action'] == 'search_members' && isset($_GET['term']) && strlen($_GET['term']) ){
+
+		$result = array();
+
+		$args = array('post_type' => 'team', 'posts_per_page' => 10, 's' => $_GET['term']);
+
+		
+		$team_members = new WP_Query( $args );
+		
+		if( $team_members -> have_posts() ){
+           
+            foreach( $team_members -> posts as $post ){
+                
+                $a_json_row["suggestions"] = $post -> post_title;
+                $a_json_row["data"] =  $post -> ID;
+                $a_json_row["label"] = $post -> post_title;
+                array_push($result, $a_json_row);
+            }
+        }
+
+
+        echo json_encode( $result );
+
+	}
+
+	exit();
+}
+
+add_action('wp_ajax_search_members', 'flo_search_members');
+add_action('wp_ajax_nopriv_search_members', 'flo_search_members');
+
+
+/**
+ * Query projects posts by the selected criteria
+ */
+function flo_filter_projects(){
+
+	global $the_query;
+
+	if(isset($_POST['flo_page_number'])){
+		$current = $_POST['flo_page_number'];
+	}else if ( get_query_var('paged') ) {
+	    $current = get_query_var('paged');
+	} elseif ( get_query_var('page') ) {
+	    $current = get_query_var('page');
+	} else {
+	    $current = 1;
+	}
+		
+	$query_args = array(
+		'post_type' => 'projects',
+		'paged' => $current, 
+		'posts_per_page' => 20
+	);
+
+
+	// Add date filter
+	$date_query = array();
+
+	if(isset($_POST['date-from']) && strlen($_POST['date-from'])){
+		
+		$date_query['after'] = $_POST['date-from'] ;
+		$date_query['inclusive'] = true;
+	}
+
+	if(isset($_POST['date-to']) && strlen($_POST['date-to'])){
+		
+		$date_query['before'] = $_POST['date-to'] ;
+		$date_query['inclusive'] = true;
+	}
+
+	if(sizeof($date_query)){
+		$query_args['date_query'] = $date_query;
+	}
+	// EOF Add date filter
+
+	// team member filter
+	if(isset($_POST['team-member']) && is_numeric($_POST['team-member']) ){
+
+		$query_args['meta_query'] = array(
+				'relation' => 'AND',
+				array(
+					'key'     => 'members',
+					'value'   => $_POST['team-member'],
+					'compare' => 'LIKE'
+				)
+				
+			);
+	}
+
+	// tag filter
+	if(isset($_POST['tag']) && strlen($_POST['tag']) ){
+
+		$explode_tag = explode('|', $_POST['tag'] );
+
+		if(is_array($explode_tag) && sizeof($explode_tag) == 2 ){
+
+
+			$tax = $explode_tag[0];
+			$tax_id = $explode_tag[1];
+
+			$query_args['tax_query'] = array(
+				'relation' => 'AND',
+				
+				array(
+					'taxonomy' => $tax,
+					'field'    => 'id',
+					'terms'    => array( $tax_id ),
+					'operator' => 'IN',
+				),
+			);
+		}
+			
+	}
+
+
+	$the_query = new WP_Query( $query_args );
+
+	if ( $the_query->have_posts() ) {
+
+		while ( $the_query->have_posts() ) {
+			$the_query->the_post();
+			echo '<span>' . get_the_title() . '</span><br>';
+
+		}
+		get_template_part( 'partials/pagination' );
+	}
+
+	exit;
+}
+
+add_action('wp_ajax_filter_projects', 'flo_filter_projects');
+add_action('wp_ajax_nopriv_filter_projects', 'flo_filter_projects');
+
+
 
 
 

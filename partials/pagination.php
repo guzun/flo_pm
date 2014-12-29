@@ -17,30 +17,43 @@
 			);
 
 	if( $wp_rewrite->using_permalinks() ){
-			$pagination['base'] = user_trailingslashit( trailingslashit( remove_query_arg( 'fp_type' , remove_query_arg( 'type' , remove_query_arg( 's', get_pagenum_link( 1 ) ) ) ) ) . 'page/%#%/', 'paged' );
+			$pagination['base'] = user_trailingslashit( trailingslashit( remove_query_arg( 'type' , remove_query_arg( 's', get_pagenum_link( 1 ) ) ) ) . 'page/%#%/', 'paged' );
     }
 
 	if( !empty($wp_query->query_vars['s'] ) ){
 			$pagination['add_args'] = array( 's' => urlencode( get_query_var( 's' ) ) );
     }
 
-    if( !empty( $wp_query->query_vars['fp_type'] ) ){
-			$pagination['add_args'] = array( 'fp_type' => get_query_var( 'fp_type' ) );
-    }
+   
+	//$pgn = paginate_links( $pagination );
+	$pgn = paginate_links_array( $pagination );
 
-	$pgn = paginate_links( $pagination );
+	//  print '<pre style="margin:10px; border:1px dashed #999999; padding:10px; color:#333; background:#ffffff;">';
+	// 	var_dump($pgn);
+	// print '</pre>';
+	
+	
 	if( $current == 1 ){
 		$current--;
 	}
-
+	
 	if(!empty($pgn)){
-		echo '<div class="pag">';
+		echo '<div class="pag flo-projects-filter">';
 		echo '<ul class="b_pag center p_b">';
 		foreach($pgn as $k => $link){
-			print '<li>' . str_replace( "'" , '"' , $link ) . '</li>';
+			$classes =  (isset($link->classes) ? implode(' ', $link->classes) : '');
+			print '<li>';
+				if(strstr($classes, 'current')){
+					print '<span class="'.$classes.'" data-pagenumber="'.$link->pagenumber.'">'.$link->text.'</span>';
+				}else{
+					print '<a  class="'.$classes.'" href="'.$link->url.'" data-pagenumber="'.$link->pagenumber.'">'.$link->text.'</a>';
+				}
+			print '</li>';
 		}
 		echo '</ul>';
+		echo '<input type="hidden" name="flo_page_number" class="flo-page-number" value="'.$current.'">';
 		echo '</div>';
 	}
 
 ?>
+
