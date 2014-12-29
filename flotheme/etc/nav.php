@@ -2,7 +2,8 @@
 class Flotheme_Nav_Walker extends Walker_Nav_Menu 
 {
 
-	function start_el(&$output, $item, $depth, $args) 
+	//function start_el(&$output, $item, $depth, $args) 
+	function start_el(&$output, $item, $depth = 0, $args = array(), $current_object_id = 0)
 	{
 		global $wp_query;
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
@@ -21,11 +22,25 @@ class Flotheme_Nav_Walker extends Walker_Nav_Menu
 		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
 		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
 
-		$item_output = $args->before;
-		$item_output .= '<a'. $attributes .'>';
-		$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-		$item_output .= '</a>';
-		$item_output .= $args->after;
+		// $item_output = $args->before;
+		// $item_output .= '<a'. $attributes .'>';
+		// $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+		// $item_output .= '</a>';
+		// $item_output .= $args->after;
+
+		if(is_array($args)){
+			$item_output = $args['before'];
+			$item_output .= '<a'. $attributes .'>';
+			$item_output .= $args['link_before'] . apply_filters( 'the_title', $item->title, $item->ID ) . $args['link_after'];
+			$item_output .= '</a>';
+			$item_output .= $args['after'];
+		}else{
+			$item_output = $args->before;
+			$item_output .= '<a'. $attributes .'>';
+			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+			$item_output .= '</a>';
+			$item_output .= $args->after;
+		}
 
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 	}
@@ -46,7 +61,8 @@ class Flotheme_Dropdown_Nav_Walker extends Walker_Nav_Menu {
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @param int $depth Depth of page. Used for padding.
 	 */
-	public function start_lvl( &$output, $depth ) 
+	
+	public function start_lvl( &$output, $depth = 0, $args = array() )
 	{
 		$output .= "</option>";
 	}
@@ -55,7 +71,7 @@ class Flotheme_Dropdown_Nav_Walker extends Walker_Nav_Menu {
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @param int $depth Depth of page. Used for padding.
 	 */
-	public function end_lvl( &$output, $depth ) 
+	public function end_lvl( &$output, $depth = 0, $args = array() )
 	{
 		$output .= "<option>";
 	}
@@ -67,7 +83,7 @@ class Flotheme_Dropdown_Nav_Walker extends Walker_Nav_Menu {
 	 * @param int $current_page Menu item ID.
 	 * @param object $args
 	 */
-	public function start_el( &$output, $item, $depth, $args ) 
+	public function start_el( &$output, $item, $depth = 0, $args = array(), $current_object_id = 0 ) 
 	{
 		global $wp_query;
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
@@ -102,7 +118,7 @@ class Flotheme_Dropdown_Nav_Walker extends Walker_Nav_Menu {
 	 * @param object $item Page data object. Not used.
 	 * @param int $depth Depth of page. Not Used.
 	 */
-	public function end_el( &$output, $item, $depth ) 
+	public function end_el( &$output, $item, $depth = 0, $args = array() ) 
 	{
 		$output .= apply_filters( 'walker_nav_menu_dropdown_end_el', "</option>\n", $item, $depth);
 	}
