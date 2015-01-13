@@ -82,7 +82,9 @@ function add_filters($tags, $function) {
  ****************************************************************/
 if (!defined('__DIR__')) { define('__DIR__', dirname(__FILE__)); }
 define('WP_BASE', wp_base_dir());
-define('THEME_NAME', next(explode('/themes/', get_template_directory())));
+//define('THEME_NAME', next(explode('/themes/', get_template_directory())));
+$flo_get_template_directory = explode('/themes/', get_template_directory() );
+define('THEME_NAME', $flo_get_template_directory[1]);
 define('RELATIVE_PLUGIN_PATH', str_replace(site_url() . '/', '', plugins_url()));
 define('FULL_RELATIVE_PLUGIN_PATH', WP_BASE . '/' . RELATIVE_PLUGIN_PATH);
 define('RELATIVE_CONTENT_PATH', str_replace(site_url() . '/', '', content_url()));
@@ -92,7 +94,8 @@ define("THEME_URL", get_template_directory_uri());
 /****************************************************************
  * Define Framework Constants
  ****************************************************************/
-define('FLOTHEME_MODE', 'production');
+//define('FLOTHEME_MODE', 'production');
+define('FLOTHEME_MODE', 'dev');
 define('FLOTHEME_CUSTOMIZED', true); // set to TRUE if you changed something in the source code.
 define('FLOTHEME_THEME_VERSION', theme_data_variable('Version'));
 define('FLOTHEME_PREFIX',			'flo_');

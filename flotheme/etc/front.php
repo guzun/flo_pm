@@ -584,12 +584,24 @@ function flo_filter_projects(){
 	$the_query = new WP_Query( $query_args );
 
 	if ( $the_query->have_posts() ) {
+	?>
+	<section class="result-list list-view"> <!--grid-view -->
+		<div class="results">
+	<?php	
+		//<!--BOF - This is the top row of the list. Has different marckup -->
+		get_template_part('partials/list-header'); 
+		//<!-- EOF - top row -->
 
 		while ( $the_query->have_posts() ) {
 			$the_query->the_post();
-			echo '<span>' . get_the_title() . '</span><br>';
-
+			
+			get_template_part('partials/project-details'); 
+			
 		}
+	?>
+		</div>
+	</section>	
+	<?php	
 		get_template_part( 'partials/pagination' );
 	}
 

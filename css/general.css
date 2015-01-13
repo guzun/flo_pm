@@ -1078,6 +1078,308 @@ body {
 *******************************/
 /* Pages
 *******************************/
+.content-main {
+  background-color: #f8f8f8;
+  margin-left: 160px;
+  min-height: 100%;
+  position: relative;
+}
+.content-main:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+.content-main .content-main-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 100px;
+  left: 0;
+}
+.content-main .left-side {
+  float: left;
+  height: 100%;
+}
+.content-main .left-side {
+  width: 30%;
+  min-width: 20rem;
+  max-width: 31rem;
+  background-color: rgba(255, 255, 255, 0.45);
+}
+.content-main .right-side {
+  overflow: hidden;
+  height: 100%;
+  background-color: #f8f8f8;
+}
+/* Projects List
+ *******************************/
+.options {
+  margin: 30px 47px;
+}
+.options:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+.option-items {
+  float: left;
+}
+.result-info {
+  float: right;
+}
+.result-info .toggle-view,
+.result-info .projects-num {
+  display: inline-block;
+  margin-left: 35px;
+}
+.result-list {
+  overflow: hidden;
+}
+.result-list.grid-view {
+  margin-left: 32px;
+  margin-right: 32px;
+}
+.result-list.list-view {
+  margin-left: 47px;
+  margin-right: 47px;
+}
+.result-meta .name,
+.result-meta .category,
+.result-meta .member,
+.result-meta .date,
+.result-meta .status {
+  color: #656e7c;
+}
+.grid-view .results {
+  margin-bottom: 15px;
+}
+.grid-view .results:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+.grid-view .result-item {
+  float: left;
+  width: 20%;
+  position: relative;
+  padding: 15px;
+}
+.grid-view .result-item:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+.grid-view .result-item-inner,
+.grid-view .result-meta,
+.grid-view .result-item-link {
+  position: absolute;
+}
+.grid-view .result-item-link {
+  display: block;
+  top: 0;
+  height: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.grid-view .result-item-inner {
+  top: 15px;
+  right: 15px;
+  bottom: 15px;
+  left: 15px;
+  background-color: thumb-bg;
+  border: 10px solid #ffffff;
+  -webkit-box-shadow: 0 3px 2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 3px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.1);
+}
+.grid-view .result-meta {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #ffffff;
+  text-align: center;
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  -webkit-opacity: 0;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -ms-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+.grid-view .result-meta:hover {
+  -moz-opacity: 1;
+  -khtml-opacity: 1;
+  -webkit-opacity: 1;
+  opacity: 1;
+}
+.grid-view .result-meta .name {
+  font-size: 18px;
+  margin-bottom: 7px;
+}
+.grid-view .result-meta .category {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.grid-view .result-meta .member,
+.grid-view .result-meta .date,
+.grid-view .result-meta .status {
+  display: none;
+}
+.grid-view .result-meta-inner {
+  padding-top: 74px;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  -moz-transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+.grid-view .result-meta-inner:before {
+  content: '';
+  display: block;
+  width: 19px;
+  height: 27px;
+  background: url("../img/sprites.png") 0 -150px no-repeat;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -10px;
+}
+.list-view .results {
+  margin-bottom: 30px;
+}
+.list-view .result-image,
+.list-view .result-item-link {
+  display: none;
+}
+.list-view .result-item:nth-of-type(even) .result-meta-inner {
+  background-color: #efefef;
+}
+.list-view .result-meta-inner {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+}
+.list-view .result-meta-inner .name,
+.list-view .result-meta-inner .category,
+.list-view .result-meta-inner .member,
+.list-view .result-meta-inner .date,
+.list-view .result-meta-inner .status {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 6px;
+}
+.list-view .result-meta-inner .name {
+  width: 50%;
+  font-size: 1.4rem;
+}
+.list-view .result-meta-inner .category,
+.list-view .result-meta-inner .member,
+.list-view .result-meta-inner .date,
+.list-view .result-meta-inner .status {
+  font-size: 12px;
+}
+.list-view .result-meta-inner .status {
+  width: 10%;
+}
+.list-view .result-header {
+  background-color: #ffffff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.list-view .result-header .result-meta-inner {
+  background-color: transparent;
+}
+.list-view .result-header .name,
+.list-view .result-header .category,
+.list-view .result-header .member,
+.list-view .result-header .date,
+.list-view .result-header .status {
+  font-size: 14px;
+}
+.status span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.status.closed span {
+  background-color: #eb4b52;
+}
+.status.active span {
+  background-color: #4cd864;
+}
+/* Single Project
+ *******************************/
+/* Members List
+ *******************************/
+.members-list {
+  margin-left: 47px;
+  margin-right: 47px;
+}
+.members-list-inner {
+  margin-left: -30px;
+  margin-right: -30px;
+}
+.members-list-inner:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+.member-item {
+  width: 16.6666%;
+  float: left;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.member-item-inner {
+  position: relative;
+}
+.member-item-inner .member-item-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+.member-item-inner .member-image {
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  overflow: hidden;
+  margin-bottom: 25px;
+  position: relative;
+}
+.member-item-inner .member-image .hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+.flo-projects {
+  position: relative;
+}
+/* Footer
+ *******************************/
 /* 13'
 *******************************/
 @media (max-width: 1400px) {
