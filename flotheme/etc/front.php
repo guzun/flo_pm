@@ -59,8 +59,12 @@ add_action('wp_print_scripts', 'flo_init_js_vars');
  */
 function flo_enqueue_styles() {
 
+	// add perfect scrollbar css
+	wp_register_style( 'perfect_scrollbar_css', THEME_URL . '/css/perfect-scrollbar.min.css', array(), FLOTHEME_THEME_VERSION, 'all');
 	// add general css file
 	wp_register_style( 'flotheme_general_css', THEME_URL . '/css/general.css', array(), FLOTHEME_THEME_VERSION, 'all');
+
+	wp_enqueue_style('perfect_scrollbar_css');
 	wp_enqueue_style('flotheme_general_css');
 
 	wp_enqueue_style( 'jquery-ui-datepicker-style' , '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css');
@@ -81,9 +85,11 @@ function flo_enqueue_scripts() {
 
 	if (FLOTHEME_MODE == 'production') {
 		wp_register_script( 'flo_plugins', THEME_URL . '/js/plugins.min.js', array( 'jquery' ), FLOTHEME_THEME_VERSION, false );
+		wp_register_script( 'perfect_scrollbar_js', THEME_URL . '/js/perfect-scrollbar.min.js', array( 'jquery' ), FLOTHEME_THEME_VERSION, false );
 		wp_register_script( 'flo_scripts', THEME_URL . '/js/scripts.min.js', array( 'jquery' ), FLOTHEME_THEME_VERSION, false );
 	} else {
 		wp_register_script( 'flo_plugins', THEME_URL . '/js/plugins.js', array( 'jquery' ), FLOTHEME_THEME_VERSION, false );
+		wp_register_script( 'perfect_scrollbar_js', THEME_URL . '/js/perfect-scrollbar.min.js', array( 'jquery' ), FLOTHEME_THEME_VERSION, false );
 		wp_register_script( 'flo_scripts', THEME_URL . '/js/scripts.js', array( 'jquery' ), FLOTHEME_THEME_VERSION, false );
 	}
 
@@ -92,6 +98,7 @@ function flo_enqueue_scripts() {
 	wp_enqueue_script( 'flo_plugins' );
 	wp_enqueue_script( 'jquery-ui-autocomplete' );
 	wp_enqueue_script( 'jquery-ui-datepicker' );
+	wp_enqueue_script( 'perfect_scrollbar_js' );
 	wp_enqueue_script( 'flo_scripts' );
 }
 add_action( 'wp_enqueue_scripts', 'flo_enqueue_scripts');

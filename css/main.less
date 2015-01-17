@@ -1,8 +1,17 @@
 @import 'mixins.less';
 @import 'elements.less';
 
+/* Table of contents
+*******************************/
+/*
+*	1. App variables
+*	2. General styles
+*	3. Layout
+*	4. Header
+*/
 
-/* Custom variables
+
+/* 1. App variables
 *******************************/
 
 // Base Colors
@@ -29,7 +38,7 @@
 @baseFontSize: 16;
 
 
-/* Main styles
+/* 2. General styles
 *******************************/
 * {
 	.box-sizing;
@@ -43,37 +52,103 @@ body {
 	color: @body-font-color;
 }
 
-.wrapper {
-	width: 100%;
-	height: 100%;
-}
 
-#content-main {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	.box-sizing;
-	padding-top: 100px;
-	padding-left: 150px;
-}
-
+/* 3. Layout
+*******************************/
 html, body {
 	width: 100%;
 	height: 100%;
 }
 
-/* Header
-*******************************/
+.wrapper {
+	width: 100%;
+	height: 100%;
+}
+
 .header-main {
-	background-color: rgba(28,45,57,0.6);
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
+	max-height: 100px;
 	z-index: 10;
+}
+
+.nav-main {
+	position: absolute;
+	left: 0;
+	top: 100px;
+	bottom: 0;
+	width: 150px;
+	z-index: 9;
+}
+
+.content-main {
+	position: absolute;
+	top: 100px;
+	right: 0;
+	bottom: 0;
+	left: 150px;
+	overflow-y: auto;
+
+	.content-main-inner {
+		// position: absolute;
+		// width: 100%;
+		// height: 100%;
+		// top: 100px;
+		// left: 0;
+	}
+}
+
+.flex-container {
+	min-height: 100%;
+
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+
+	-webkit-box-align: stretch;
+	-moz-box-align: stretch; /* OLD… */
+   	-ms-flex-align: stretch; /* You know the drill now… */
+   	-webkit-align-items: stretch;
+   	align-items: stretch;
+}
+
+.project-single {
+
+	.left-side {
+		background-color: rgba(255, 255, 255, 0.5);
+		
+		width: 30%;
+
+		-webkit-flex: 0 0 30%;
+		   -moz-flex: 0 0 30%;
+		    -ms-flex: 0 0 30%;
+		        flex: 0 0 30%;
+	}
+
+	.right-side {
+		background: rgba(0, 0, 0, 0.5);
+		
+		width: 70%;
+
+		-webkit-flex: 0 0 70%;
+		   -moz-flex: 0 0 70%;
+		    -ms-flex: 0 0 70%;
+		        flex: 0 0 70%;
+	}
+}
+
+
+/* 4. Header
+*******************************/
+.header-main {
+	//background-color: rgba(28,45,57,0.6);
+	background-color: gold;
 	padding-top: 30px;
 	padding-bottom: 30px;
-	max-height: 100px;
 }
 
 .header-main-inner {
@@ -137,19 +212,13 @@ html, body {
 /* Main Navigation
 *******************************/
 .nav-main {
-	position: absolute;
-	left: 0;
-	height: 100%;
-	width: 150px;
-	top: 0;
-	bottom: 0;
-	z-index: 9;
 	text-align: center;
+	background-color: lightgreen;
 
 	.nav-main-in {
-		height: 100%;
-		margin-top: 100px;
-		background-color: rgba(25, 36, 57, 0.5);
+		//height: 100%;
+		//margin-top: 100px;
+		//background-color: rgba(25, 36, 57, 0.5);
 	}
 
 	.menu-item {
@@ -200,20 +269,20 @@ html, body {
 	.menu-item-people a:before { background-position: -50px 0; }
 	.menu-item-projects a:before { background-position: -100px 0; }
 
-	#menu-item-165 {
-		&:after {
-			content: "";
-			position: absolute;
-			top: 20px;
-			left: 0;
-			right: 0;
-			margin: auto;
-			height: 37px;
-			width: 37px;
-			background: url(../img/dashboard.png) center center no-repeat;
-		}
+	// #menu-item-165 {
+	// 	&:after {
+	// 		content: "";
+	// 		position: absolute;
+	// 		top: 20px;
+	// 		left: 0;
+	// 		right: 0;
+	// 		margin: auto;
+	// 		height: 37px;
+	// 		width: 37px;
+	// 		background: url(../img/dashboard.png) center center no-repeat;
+	// 	}
 
-	}
+	// }
 }
 
 /* Project Single
@@ -221,16 +290,16 @@ html, body {
 
 .project-single {
 	position: relative;
-	width: 100%;
-	height: 100%;
+	//width: 100%;
+	//height: 100%;
 	.box-sizing;
-	.clear;
+	//.clear;
 
 	.left-side {
-		float: left;
-		width: 30%;
-		height: 100%;
-		background-color: rgba(248,248,248,0.5);
+		//float: left;
+		//width: 30%;
+		//height: 100%;
+		//background-color: rgba(248,248,248,0.5);
 
 		.container {
 			position: relative;
@@ -336,10 +405,10 @@ html, body {
 	}
 
 	.right-side {
-		float: left;
-		width: 70%;
-		height: 100%;
-		background-color: #f3f3f3;
+		//float: left;
+		//width: 70%;
+		//height: 100%;
+		//background-color: #f3f3f3;
 
 		.container {
 			width: 90%;
@@ -509,39 +578,30 @@ html, body {
 
 /* Pages
 *******************************/
- .content-main {
- 	background-color: @brand-gray;
- 	margin-left: 160px;
- 	min-height: 100%;
- 	.clear;
- 	position: relative;	
+.content-main {
+		// margin-left: 160px;
+		// min-height: 100%;
+		// .clear;
+		// position: relative;
+		background-color: lightblue;
 
- 	.content-main-inner {
- 		position: absolute;
- 		width: 100%;
- 		height: 100%;
- 		top: 100px;
- 		left: 0;
- 	}
+		.content-main-inner {
+			// position: absolute;
+			// width: 100%;
+			// height: 100%;
+			// top: 100px;
+			// left: 0;
+		}
 
- 	.left-side {
- 		float: left;
- 		height: 100%;
- 	}
+		.left-side {
+			//background-color: rgba(255, 255, 255, 0.45);
+		}
 
- 	.left-side {
- 		width: 30%;
- 		min-width: 20rem;
- 		max-width: 31rem;
- 		background-color: rgba(255, 255, 255, 0.45);
- 	}
-
- 	.right-side {
- 		overflow: hidden;
- 		height: 100%;
- 		background-color: @brand-gray;
- 	}
- }
+		.right-side {
+			//overflow: hidden;
+			//background-color: @brand-gray;
+		}
+	}
 
  /* Projects List
  *******************************/
@@ -762,7 +822,7 @@ html, body {
 
  .status {
 
- 	span{
+ 	span {
  		display: inline-block;
  		width: 10px;
  		height: 10px;
@@ -776,7 +836,7 @@ html, body {
  		}
  	}
 
- 	&.active {
+ 	&.open {
 
  		span {
  			background-color: @open-color;

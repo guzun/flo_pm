@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-	<section class="project-single">
+	<section class="flex-container project-single">
 		<div class="left-side">
 			<div class="container">
 				<a href="window.history.go(-1)" class="back">back to projects</a>
