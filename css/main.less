@@ -8,6 +8,7 @@
 *	2. General styles
 *	3. Layout
 *	4. Header
+*	end. Vendor
 */
 
 
@@ -89,7 +90,7 @@ html, body {
 	right: 0;
 	bottom: 0;
 	left: 150px;
-	overflow-y: auto;
+	overflow: hidden;
 
 	.content-main-inner {
 		// position: absolute;
@@ -906,3 +907,27 @@ html, body {
  .footer-main {
 	
  }
+
+
+/* end. Vendor
+ *******************************/
+
+ // Perfect Scrollbar
+.ps-container {
+
+	> .ps-scrollbar-y-rail {
+	
+		> .ps-scrollbar-y {
+			width: 4px;
+			background-color: #dddee0;
+		}
+	}
+
+	> .ps-scrollbar-x-rail {
+	
+		> .ps-scrollbar-x {
+			height: 4px;
+			background-color: #dddee0;
+		}
+	}
+}

@@ -612,6 +612,7 @@ img {
 *	2. General styles
 *	3. Layout
 *	4. Header
+*	end. Vendor
 */
 /* 1. App variables
 *******************************/
@@ -667,7 +668,7 @@ body {
   right: 0;
   bottom: 0;
   left: 150px;
-  overflow-y: auto;
+  overflow: hidden;
 }
 .flex-container {
   min-height: 100%;
@@ -1365,6 +1366,16 @@ body {
 }
 /* Footer
  *******************************/
+/* end. Vendor
+ *******************************/
+.ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y {
+  width: 4px;
+  background-color: #dddee0;
+}
+.ps-container > .ps-scrollbar-x-rail > .ps-scrollbar-x {
+  height: 4px;
+  background-color: #dddee0;
+}
 /* 13'
 *******************************/
 @media (max-width: 1400px) {

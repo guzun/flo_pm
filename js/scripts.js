@@ -111,7 +111,8 @@ jQuery(function($) {
             w:$(window),
             b:$('body'),
             h:$('#header-main'),
-            l:$('#loading-main')
+            l:$('#loading-main'),
+            ps:$('.js-perfect-scrollbar') // the perfect scroll obj
         },
         options:{
             slider:{
@@ -453,4 +454,24 @@ jQuery(function($) {
         });
     };
     $('#archives .flo-archives').init_archives();
+
+    // init perfect-scrollbar
+    $.flo.elements.ps.each(function(){
+        $(this).perfectScrollbar({
+            // include only inner container size
+            includePadding: true,
+            // set max height to scrollbar
+            maxScrollbarLength: 60
+        });
+    });
+
+    // update perfect-scrollbar on resize
+    $.flo.elements.w.on('resize', function(){
+        $.flo.elements.ps.each(function(){
+            $(this).perfectScrollbar('update');
+        });
+    });
+
+
+
 });

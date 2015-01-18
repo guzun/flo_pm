@@ -35,4 +35,4 @@
 				</div>
 			</div>
 		</nav>
-		<div id="content-main" class="content-main" role="main">
+		<div id="content-main" class="content-main js-perfect-scrollbar" role="main">
