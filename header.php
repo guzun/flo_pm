@@ -12,9 +12,9 @@
 	<div id="wrapper" class="wrapper">
 		<header id="header-main" class="header-main">
 			<a id="rel-top"></a>
-			<div class="header-main-inner in">
-				<div class="logo in"><a href="<?php echo home_url(); ?>/"><img src="<?php echo get_stylesheet_directory_uri();?>/img/logo.png" /></a></div>
-				<div class="searchform in">
+			<div class="header-main-inner iin">
+				<div class="logo iin"><a href="<?php echo home_url(); ?>/"><img src="<?php echo get_stylesheet_directory_uri();?>/img/logo.png" /></a></div>
+				<div class="searchform iin">
 					<?php get_search_form( 'true' ); ?>
 					<span class="icon-search"></span>
 				</div>
